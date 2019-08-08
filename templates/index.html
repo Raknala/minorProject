@@ -11,29 +11,48 @@
 
 </head>
 <body>
-    <div class="header"><header>Welcome</header></div>
-    <p>This app helps to calculate vegetation index and display output seperating healthy and unhealthy part of field</p><br>
-    <hr width = 65% , color="black" class="style">
-    <p>To use this app , upload image.</p>
-    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
-        {% csrf_token %}
-        <input type = "file" name='img' id="real-file" hidden='hidden'>
-        <center>
-            <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button>
-        </center>
-        <center>
-        <select id='algorithm' name="algorithm">
-            <option value="0">select algorithm</option>
-            <option value="vari">vari</option>
-            <option value="ndvi">ndvi</option>
-          </select>
-        </center>
-        <center>
+    <div class="main">
+        <p class="title">vegetation index</p><br>
+        <p class="explanation">upload image and it will give you the colored output separating healty and unhealthy part of your field</p>
+        <hr width = 65% , color="black" class="style">
+        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
+            {% csrf_token %}
+            <input type = "file" name='img' id="real-file" hidden='hidden'>
+            <center>
+                <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button>
+            </center>
+            <center>
+            <select id='algorithm' name="algorithm">
+                <option value="0">Select Algorithm</option>
+                <option value="vari">vari</option>
+                <option value="ndvi">ndvi</option>
+            </select>
+            </center>
+            <center>
             <div id="errormsg" style="display: none"></div>
-           <button type="submit" id="submit">Upload</button>
-        </center>
-    </form>
-    <hr width = 65% , color="black" class="style">
-    <div class="footer"><footer>copyright &copy; 2019 minor</footer></div>
+            <button type="submit" id="submit">Upload</button>
+            </center>
+        </form>
+        <hr width = 65% , color="black" class="style">
+    </div>
+    <style>
+        #submit{
+            background: #111;
+            display: inline-block;
+            color: aliceblue;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 0px;
+            margin-top:0;
+            margin-bottom: 1em;
+            width: 50%;
+        }
+        #submit:hover{
+            background: #020103;
+            color:rgb(254, 255, 255);
+            font-size: 1em;
+        }
+    </style>
 </body>
 </html>

@@ -1,19 +1,13 @@
 body{
-    background-color:rgba(158, 180, 179, 0.993);
+    background: rgba(160, 157, 157, 0.281);
     margin: 0;
-}
-footer{
-    background-image: linear-gradient(to left,#59d6ec,#020103);
-    color:aliceblue;
-    font-size: 1em;
-    text-align: center;
-    padding:.1em;
 }
 p{
     text-align: center;
     margin-top: 1em;
-    font-size: 1em;
+    font-size: 1.5vw;
     color:black;
+    text-transform: capitalize;
 }
 .header{
     width: 100%;
@@ -27,12 +21,14 @@ p{
     width: 100%;
 }
 .input header{
-    background-image: linear-gradient(to right,#59d6ec,#020103);
+    background: #333;
+    color: white;
     font-size: 2em;
     text-align: center;
 }
 .output header{
-    background-image: linear-gradient(to left,#59d6ec,#020103);
+    background: #333;
+    color: white;
     font-size: 2em;
     text-align: center;
 }

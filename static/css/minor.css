@@ -1,63 +1,40 @@
 body{
-
-        background-color:rgba(158, 180, 179, 0.993);
-        padding-top:40px;
-        padding-bottom:40px; 
+        background: rgba(160, 157, 157, 0.281);
+        padding: 0; 
         margin: 0; 
-}
-
-header  {
-    background-image: linear-gradient(to right,#59d6ec,#020103 );
-    font-size: 2em;
-    padding: 8px;
-    text-align: center;
-    text-shadow: 1px 1px #666b6b;
-    text-transform: uppercase;
-}
-
-footer{
-    background-image: linear-gradient(to left,#59d6ec,#020103);
-    color:aliceblue;
-    font-size: 1em;
-    text-align: center;
-    padding:.1em;
-}
-p{
-    text-align: center;
-    margin-top: 3em;
-    font-size: 1em;
-    color:black;
-}
-#custom-button ,#submit {
-    background-image: linear-gradient(to left,#59d6ec,#020103);
+    }
+#custom-button ,#submit, #algorithm{
+    background: #111;
     display: inline-block;
     color: aliceblue;
     cursor: pointer;
     padding: 10px 20px;
-    border-radius: 3px;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
+    border-radius: 50px;
     border: 0px;
-    margin-top: 1.5em;
+    margin-top:0;
     margin-bottom: 1em;
+    width: 50%;
 }
 #custom-button:hover {
-    background-image: linear-gradient(to right,#59d6ec,#020103);
+    background: #020103;
     color:rgb(254, 255, 255);
+    font-size: 1em;
 }
-#submit:hover{
-    background-image: linear-gradient(to right,#59d6ec,#020103); 
+#algorithm:hover{
+    background: #020103;
     color:rgb(254, 255, 255);
+    font-size: 1em;
 }
 hr.style {
     border: 0;
     height: 1px;
     background: #333;
-    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
-    background-image: -moz-linear-gradient(left, #ccc, #333, #ccc);
-    background-image: -ms-linear-gradient(left, #ccc, #333, #ccc);
-    background-image: -o-linear-gradient(left, #ccc, #333, #ccc);
+    background-image: -webkit-linear-gradient(left, #333, #ccc, #333);
+    background-image: -moz-linear-gradient(left, #333, #ccc, #333);
+    background-image: -ms-linear-gradient(left,#333, #ccc, #333);
+    background-image: -o-linear-gradient(left, #333, #ccc, #333);
     margin-bottom: 2em;
+    margin-top:2em; 
 }
 .header{
     width: 100%;
@@ -76,12 +53,44 @@ hr.style {
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 3px;
-    -webkit-transition-duration: 0.4s; 
-    transition-duration: 0.4s;
     border: 0px;
     margin-bottom: 3em;
 }
 #submit:hover {
     background-color:#444; 
     color:aquamarine;
+}
+.main{
+    background: #222;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    box-shadow: 10px 15px 25px #444;
+}
+.title{
+    text-align: center;
+    letter-spacing: .5em;
+    margin-top: .2em;
+    margin-bottom: .2em;
+    text-transform: uppercase;
+    font-size: 4vw;
+    background: -webkit-linear-gradient(white, #32CD32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.explanation{
+    font-size: 1.3vw;
+    color: white;
+    margin-top:0;
+    text-align: center;
+    text-transform: capitalize;
+    font-family: sans-serif;
+
+}
+#custom-button ,#algorithm{
+    margin-bottom: 2em;
 }
