@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>minor</title>
+    <link rel="stylesheet" ,type ="text/css" href="{% static  'css/minor.css' %}">
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+
+</head>
+<body>
+    <div class="header"><header>Welcome</header></div>
+    <p>This app helps to calculate vegetation index and display output seperating healthy and unhealthy part of field</p><br>
+    <hr width = 65% , color="black" class="style">
+    <p>To use this app , upload image.</p>
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkform()">
+        {% csrf_token %}
+        <input type = "file" name='img' id="real-file" hidden='hidden'>
+        <center>
+            <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button>
+        </center>
+        <center>
+        <select id='algorithm' name="algorithm">
+            <option value="0">select algorithm</option>
+            <option value="vari">vari</option>
+            <option value="ndvi">ndvi</option>
+          </select>
+        </center>
+        <center>
+           <button type="submit" id="submit">Upload</button>
+        </center>
+    </form>
+    <hr width = 65% , color="black" class="style">
+    <div class="footer"><footer>copyright &copy; 2019 minor</footer></div>
+</body>
+</html>

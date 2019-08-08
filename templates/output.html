@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>minor</title>
+    <link rel="stylesheet" ,type ="text/css" href="{% static  'css/output.css' %}">
+    <link rel="stylesheet", type="text/css" media="screen and (max-width: 1280px)" href="{% static 'css/small.css'  %}">
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
+</head>
+<body>
+    <p>vegetation index of the input file provided</p><br>
+    <hr width = 65% , color="black" class="style">
+    <div class="input">
+        <header>Input image</header>
+        <div class="graph">
+            <img src= "{% static inputimg %}" class="graph-img">
+        </div>
+    </div>
+    <div class="output">
+        <header>Output image</header>
+        <div class="graph">
+            <img src= "{% static outputimg %}" class="graph-img">    
+        </div>
+    </div>
+    <div class="footer"><footer>copyright &copy; 2019 minor</footer></div>
+</body>
+</html>
