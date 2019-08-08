@@ -1,0 +1,21 @@
+@media screen and (max-width:600px)
+{
+    .output{
+        float: none;
+        width: 100%;
+     }
+     .input{
+         float:none;
+         width: 100%;
+     }
+     .input header{
+         width: 100%;
+     }
+     .output header{
+         width: 100%;
+     }
+     img{
+         width: 100%;
+         height: auto;
+     }
+}

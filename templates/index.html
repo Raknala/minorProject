@@ -15,7 +15,7 @@
     <p>This app helps to calculate vegetation index and display output seperating healthy and unhealthy part of field</p><br>
     <hr width = 65% , color="black" class="style">
     <p>To use this app , upload image.</p>
-    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkform()">
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
         {% csrf_token %}
         <input type = "file" name='img' id="real-file" hidden='hidden'>
         <center>
@@ -29,6 +29,7 @@
           </select>
         </center>
         <center>
+            <div id="errormsg" style="display: none"></div>
            <button type="submit" id="submit">Upload</button>
         </center>
     </form>
