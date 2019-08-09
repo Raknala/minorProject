@@ -14,6 +14,7 @@ body{
     margin-top:0;
     margin-bottom: 1em;
     width: 50%;
+    outline: none;
 }
 #custom-button:hover {
     background: #020103;
@@ -69,7 +70,7 @@ hr.style {
     position: fixed;
     transform: translate(-50%, -50%);
     padding: 10px;
-    box-shadow: 10px 15px 25px #444;
+    box-shadow: 10px 15px 25px #222;
 }
 .title{
     text-align: center;
@@ -93,4 +94,38 @@ hr.style {
 }
 #custom-button ,#algorithm{
     margin-bottom: 2em;
+}
+
+#errormsg{
+color: red;
+}
+#submit{
+    background: #111;
+    display: inline-block;
+    color: aliceblue;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 0px;
+    margin-top:0;
+    margin-bottom: 1em;
+    width: 50%;
+}
+#submit:hover{
+    background: #020103;
+    color:rgb(254, 255, 255);
+    font-size: 1em;
+}
+option{
+    background: #111;
+    display: inline-block;
+    color: aliceblue;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 0px;
+    margin-top:0;
+    margin-bottom: 1em;
+    width: 50%;
+    outline: none;   
 }

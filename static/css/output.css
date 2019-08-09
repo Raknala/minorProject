@@ -9,17 +9,6 @@ p{
     color:black;
     text-transform: capitalize;
 }
-.header{
-    width: 100%;
-    position: fixed ;
-    top: 0;
-}
-.footer{
-    position : fixed ;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
 .input header{
     background: #333;
     color: white;
@@ -34,7 +23,8 @@ p{
 }
 .input{
     float: left;
-    margin-right: 10%;
+    margin-right: 4%;
+    margin-left: 3%;
     width: 45%;
     height: 400px;
 
@@ -43,6 +33,7 @@ p{
     float:left;
     width: 45%;
     height: 400px;
+    margin-right:3%;
 }
 hr.style {
 border: 0;

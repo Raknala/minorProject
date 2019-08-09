@@ -29,9 +29,9 @@ def calcVegIndex(img,extension,photo_path,num=0):
         NDVI = (NIR - VIS) / (NIR + VIS)
         cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','orange', 'yellow', 'green'])
         fig, ax = plt.subplots()
-        plt.imshow(NDVI,cmap=cmap)
+        ax.imshow(NDVI,cmap=cmap)
         plt.axis('off')
-        plt.savefig(photo_path+'result.'+extension, bbox_inches='tight')
+        fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
 
     else:#calculating vari
         red = image[:, :, 0].astype('float')
@@ -40,6 +40,6 @@ def calcVegIndex(img,extension,photo_path,num=0):
         VARI = (green - red) / (red + green - blue + .001)
         cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','orange', 'yellow', 'green'])
         fig, ax = plt.subplots()
-        plt.imshow(VARI,cmap=cmap)
+        ax.imshow(VARI,cmap=cmap)
         plt.axis('off')
-        plt.savefig(photo_path+'result.'+extension, bbox_inches='tight')
+        fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')

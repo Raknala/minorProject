@@ -18,7 +18,7 @@ def upload(request):
         elif os.path.exists(photo_path + 'test.jpeg'):
             os.remove(photo_path+'test.jpeg')
         fs = FileSystemStorage()
-        filename = fs.save(photo_path+'test.'+ extension, myfile)
+        fs.save(photo_path+'test.'+ extension, myfile)
     #main code
     algorithm=request.POST['algorithm']
     if algorithm=='vari':

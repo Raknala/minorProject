@@ -9,12 +9,12 @@ function checkForm(){
     flag = false;
     if (img==''){
         sp.style.display='block';
-        sp.innerHTML='please select image';
+        sp.innerHTML='!please select image';
         return flag;    
     }
     if (alg=='0'){
         sp.style.display='block';
-        sp.innerHTML='please select any algorithm';
+        sp.innerHTML='!please select any algorithm';
         return flag;
     }
 }
