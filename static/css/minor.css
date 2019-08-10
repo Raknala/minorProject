@@ -129,3 +129,6 @@ option{
     width: 50%;
     outline: none;   
 }
+select{
+    font: inherit;
+}
