@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import matplotlib.colors
+import skimage
+matplotlib.style.use('ggplot')
+np.random.seed(1)
 def calcVegIndex(img,extension,photo_path,num=0):
     extension = 'png'
     try:
@@ -30,8 +33,48 @@ def calcVegIndex(img,extension,photo_path,num=0):
         cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','orange', 'yellow', 'green'])
         fig, ax = plt.subplots()
         ax.imshow(NDVI,cmap=cmap)
-        plt.axis('off')
+        plt.axis('off') 
         fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
+    
+        image   = mpimg.imread(photo_path+'result.'+extension)
+
+        #NIR     = image.astype('float')
+
+        NIR    = image[:, :, 0].astype('float')
+        blue    = image[:, :, 2].astype('float')
+        green   = image[:, :, 1].astype('float')
+
+        # -----------------------------------------------------------------------------------------
+
+        rgb_to_lab = skimage.color.rgb2lab(image, illuminant='D65', observer='2')
+
+        lightness = rgb_to_lab[:, :, 0]
+
+        bottom = (blue - green) ** 2
+        bottom[bottom == 0] = .0001  # replace 0 from nd.array with 1
+        VIS = (blue + green) ** 2 / bottom
+        NDVI = (NIR - VIS) / (NIR + VIS)
+        L_List = []
+        for list in lightness:
+            for sublist in list:
+            L_List.append(sublist)
+
+        N_List = []
+        for list in NDVI:
+            for sublist in list:
+                N_List.append(sublist)\
+
+        '''
+        #print(lightness)
+        print(len(N_List))
+        print(len(L_List))
+        #print(len(NDVI))
+        '''
+        x=N_List
+        y=L_List
+        np.corrcoef(x,y)
+        plt.scatter(x,y)
+        fig.savefig(photo_path+'plot.'+extension, bbox_inches='tight')
 
     else:#calculating vari
         red = image[:, :, 0].astype('float')

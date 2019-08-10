@@ -1,5 +1,13 @@
 import os
 from django.shortcuts import render
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import matplotlib.colors
+import skimage
+import numpy as np 
+matplotlib.style.use('ggplot')
+np.random.seed(1)
 #from .vari import calcVegIndex
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
@@ -19,10 +27,6 @@ def upload(request):
             os.remove(photo_path+'test.jpeg')
         fs = FileSystemStorage()
         fs.save(photo_path+'test.'+ extension, myfile)
-
-        import matplotlib.pyplot as plt
-        import matplotlib.image as mpimg
-        import matplotlib.colors
         extension = 'png'
         try:
             image=mpimg.imread('static/img/test.png')
@@ -79,12 +83,56 @@ def upload(request):
         dense=round((dense/total)*100,3)
         sparse=round((sparse/total)*100,3)
         barren=round((barren/total)*100,3)
-        '''
-        total=dense+sparse+barren
-        dense=(dense/total)*100
-        sparse=(sparse/total)*100
-        barren=(barren/total)*100
-        '''
+        extension = 'png'
+        try:
+            image=mpimg.imread('static/img/result.png')
+        except:
+            try:
+                image=mpimg.imread('static/img/result.jpg')
+                extension = 'jpg'
+            except:
+                image=mpimg.imread('static/img/result.jpeg')
+                extension = 'jpeg'
+
+        #NIR     = image.astype('float')
+
+        NIR    = image[:, :, 0].astype('float')
+        blue    = image[:, :, 2].astype('float')
+        green   = image[:, :, 1].astype('float')
+
+        # -----------------------------------------------------------------------------------------
+
+        rgb_to_lab = skimage.color.rgb2lab(image, illuminant='D65', observer='2')
+
+        lightness = rgb_to_lab[:, :, 0]
+
+        bottom = (blue - green) ** 2
+        bottom[bottom == 0] = .0001  # replace 0 from nd.array with 1
+        VIS = (blue + green) ** 2 / bottom
+        NDVI = (NIR - VIS) / (NIR + VIS)
+        L_List = []
+        for list in lightness:
+            for sublist in list:
+               L_List.append(sublist)
+
+        N_List = []
+        for list in NDVI:
+            for sublist in list:
+                N_List.append(sublist)
+        #print(lightness)
+        # print(len(N_List))
+        #print(len(L_List))
+        #print(len(NDVI))
+
+        x=N_List
+        y=L_List
+        np.corrcoef(x,y)
+        plt.scatter(x,y)
+        plt.show()
+        #plt.savefig(photo_path+'plot.png', bbox_inches='tight')
+        plt.close(fig)
+    
         inputimg='img/test.'+extension
         outputimg='img/result.'+extension
-        return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren})
+        plotimg='img/plot.'+extension
+        return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren,'plotimg':plotimg})
