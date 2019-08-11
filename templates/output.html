@@ -28,13 +28,14 @@
     <div class="value">
         <header class="phead">percentage</header>
         <p>
-           dense= {{dense}}%<br>
-           barren={{barren}}%<br>
-           sparse={{sparse}}%<br>
+           dense = {{dense}}%<br>
+           barren = {{barren}}%<br>
+           sparse = {{sparse}}%<br>
         </p>
-    </div>
-    <div class="plot">
-      <img src="{% static plotimg %}">
+        <header class="phead">Lightness vs Index</header>
+        <div class="graph">
+            <img src= "{% static plotimg %}" class="graph-img">    
+        </div>
     </div>
 </body>
 </html>
