@@ -2,6 +2,11 @@ body{
     background: rgba(160, 157, 157, 0.281);
     margin: 0;
 }
+.homeURl{
+    text-decoration: none;
+    color:black;
+    cursor: pointer;
+}
 p{
     text-align: center;
     margin-top: 1em;
