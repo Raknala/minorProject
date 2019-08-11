@@ -2,8 +2,13 @@ function uploadImg(){
     const realFile = document.getElementById("real-file");
     realFile.click();
 }
+function uploadnir(){
+    const realFilenir = document.getElementById("real-file_nir");
+    realFilenir.click();
+}
 function checkForm(){
     var img=document.getElementById('real-file').value;
+    var nir=document.getElementById('real-file_nir').value;
     var alg=document.getElementById('algorithm').value;
     var sp=document.getElementById('errormsg');
     flag = false;

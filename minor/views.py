@@ -27,12 +27,25 @@ def upload(request):
             os.remove(photo_path+'test.jpeg')
         fs = FileSystemStorage()
         fs.save(photo_path+'test.'+ extension, myfile)
-    #main code
+    if request.method == 'POST' and request.FILES['nir']:
+        myfilenir = request.FILES['nir']
+        extension = myfilenir.name.split('.')[1]
+        photo_path = 'static/img/' 
+        if os.path.exists(photo_path + 'nir.png'):
+            os.remove(photo_path + 'nir.png')
+        elif os.path.exists(photo_path + 'nir.jpg'):
+            os.remove(photo_path + 'nir.jpg')
+        elif os.path.exists(photo_path + 'nir.jpeg'):
+            os.remove(photo_path + 'nir.jpeg')
+        fs = FileSystemStorage()
+        fs.save(photo_path + 'nir.' + extension, myfilenir)
     algorithm=request.POST['algorithm']
     if algorithm=='vari':
         dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path)
-    else:
+    elif algorithm=='fndvi':
         dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,1)
+    else:
+        dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,2)
       
     inputimg='img/test.'+extension
     outputimg='img/result.'+extension

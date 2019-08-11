@@ -19,13 +19,18 @@
             {% csrf_token %}
             <input type = "file" name='img' id="real-file" hidden='hidden'>
             <center>
-                <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button>
+                <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button
+            </center>
+            <center>
+                <input type="file" name='nir' id='real-file_nir' hidden='hidden'>
+                <button type="button" id="custom-button" onclick="uploadnir()">Select nir Image</button>
             </center>
             <center>
             <select id='algorithm' name="algorithm">
                 <option value="0">Select Algorithm</option>
                 <option value="vari">vari</option>
-                <option value="ndvi">ndvi</option>
+                <option value="fndvi">false ndvi</option>
+                <option value='rndvi'>real ndvi</option>
             </select>
             </center>
             <center>
