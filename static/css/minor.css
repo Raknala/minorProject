@@ -132,3 +132,6 @@ option{
 select{
     font: inherit;
 }
+#algorithm option{
+    font-family: sans-serif;
+}
