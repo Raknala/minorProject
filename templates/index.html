@@ -20,9 +20,9 @@
             <center>
                 <select id='algorithm' name="algorithm">
                     <option value="0">Select Algorithm</option>
-                    <option value="vari">Vari</option>
-                    <option value="fndvi">False NDVI</option>
-                    <option value='rndvi'>Real NDVI</option>
+                   <!----<option value="vari">Vari</option>-->
+                    <option value="fndvi">Vari</option>
+                    <option value='rndvi'>NDVI</option>
                 </select>
             </center>
             <input type = "file" name='img' id="real-file" hidden='hidden'>
@@ -31,7 +31,7 @@
             </center>
             <center>
                 <input type="file" name='nir' id='real-file_nir' hidden='hidden'>
-                <button type="button" id="custom-button" onclick="uploadnir()">Select NIR Image</button>
+                <button type="button" id="custom-button" class="nirb" onclick="uploadnir()">Select NIR Image</button>
             </center>
             <center>
             <div id="errormsg" style="display: none"></div>

@@ -35,6 +35,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
         plt.axis('off') 
         fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
         plt.clf()
+        '''
         rgb_to_lab = skimage.color.rgb2lab(image, illuminant='D65', observer='2')
 
         lightness = rgb_to_lab[:, :, 0]
@@ -53,6 +54,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
         np.corrcoef(x,y)
         plt.scatter(x,y)
         fig.savefig(photo_path+'plot.png', bbox_inches='tight')
+        '''
         dense = 0
         sparse = 0
         barren = 0
@@ -69,7 +71,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
         sparse=round((sparse/total)*100,3)
         barren=round((barren/total)*100,3)
         return dense,sparse,barren
-    elif num==2:
+    else:
             image = plt.imread(photo_path + 'test.'+ extension)
             image_nir = mpimg.imread(photo_path+'nir.'+extension)
             NIR = image_nir
@@ -81,6 +83,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             plt.axis('off') 
             fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
             plt.clf()
+            '''
             rgb_to_lab = skimage.color.rgb2lab(image, illuminant='D65', observer='2')
 
             lightness = rgb_to_lab[:, :, 0]
@@ -99,6 +102,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             np.corrcoef(x,y)
             plt.scatter(x,y)
             fig.savefig(photo_path+'plot.png', bbox_inches='tight')
+            '''
             dense = 0
             sparse = 0
             barren = 0
@@ -115,7 +119,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             sparse=round((sparse/total)*100,3)
             barren=round((barren/total)*100,3)
             return dense,sparse,barren
-        
+    '''   
     else:#calculating vari
             red = image[:, :, 0].astype('float')
             blue = image[:, :, 2].astype('float')
@@ -127,6 +131,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             plt.axis('off')
             fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
             plt.clf()
+            
             rgb_to_lab = skimage.color.rgb2lab(image, illuminant='D65', observer='2')
 
             lightness = rgb_to_lab[:, :, 0]
@@ -145,6 +150,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             np.corrcoef(x,y)
             plt.scatter(x,y)
             fig.savefig(photo_path+'plot.png', bbox_inches='tight')
+            
             dense = 0
             sparse = 0
             barren = 0
@@ -161,4 +167,4 @@ def calcVegIndex(img,extension,photo_path,num=0):
             sparse=round((sparse/total)*100,3)
             barren=round((barren/total)*100,3)
             return dense,sparse,barren
-     
+     '''

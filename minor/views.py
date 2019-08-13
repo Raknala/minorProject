@@ -40,14 +40,16 @@ def upload(request):
         fs = FileSystemStorage()
         fs.save(photo_path + 'nir.' + extension, myfilenir)
     algorithm=request.POST['algorithm']
+    '''
     if algorithm=='vari':
         dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path)
-    elif algorithm=='fndvi':
+    '''  
+    if algorithm=='fndvi':
         dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,1)
     else:
         dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,2)
       
     inputimg='img/test.'+extension
     outputimg='img/result.'+extension
-    plotimg='img/plot.png'
-    return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren,'plotimg':plotimg})
+    #plotimg='img/plot.png'
+    return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren})
