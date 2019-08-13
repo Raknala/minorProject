@@ -17,6 +17,14 @@
         <hr width = 65% , color="black" class="style">
         <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data" onsubmit="return checkForm()">
             {% csrf_token %}
+            <center>
+                <select id='algorithm' name="algorithm">
+                    <option value="0">Select Algorithm</option>
+                    <option value="vari">Vari</option>
+                    <option value="fndvi">False NDVI</option>
+                    <option value='rndvi'>Real NDVI</option>
+                </select>
+            </center>
             <input type = "file" name='img' id="real-file" hidden='hidden'>
             <center>
                 <button type="button" id="custom-button" onclick="uploadImg()">Select Image</button
@@ -26,17 +34,9 @@
                 <button type="button" id="custom-button" onclick="uploadnir()">Select NIR Image</button>
             </center>
             <center>
-            <select id='algorithm' name="algorithm">
-                <option value="0">Select Algorithm</option>
-                <option value="vari">Vari</option>
-                <option value="fndvi">False NDVI</option>
-                <option value='rndvi'>Real NDVI</option>
-            </select>
-            </center>
-            <center>
             <div id="errormsg" style="display: none"></div>
             <button type="submit" id="submit">Upload</button>
-            </center>
+            </center> 
         </form>
         <hr width = 65% , color="black" class="style">
     </div>
