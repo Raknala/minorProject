@@ -37,7 +37,7 @@ def calcVegIndex(img,nir,extension,photo_path,num=0):
         bot=green + red
         bot[bot==0]=0.0001
         NDVI = (green - red) / (bot) 
-        cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','green','yellow'])
+        cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','yellow','green'])
         fig, ax = plt.subplots()
         ax.imshow(NDVI,cmap=cmap)
         plt.axis('off') 
