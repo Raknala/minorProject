@@ -15,8 +15,9 @@ def index(request):
     return render(request , 'index.html')
 
 def upload(request):
-    if request.method == 'POST' and request.FILES['img']:
+    if request.method=='POST':
         myfile = request.FILES['img']
+        algorithm=request.POST['algorithm']
         extension = myfile.name.split('.')[1]
         photo_path = 'static/img/' 
         if os.path.exists(photo_path + 'test.png'):
@@ -27,29 +28,22 @@ def upload(request):
             os.remove(photo_path+'test.jpeg')
         fs = FileSystemStorage()
         fs.save(photo_path+'test.'+ extension, myfile)
-    elif request.method == 'POST' and request.FILES['nir']:
-        myfilenir = request.FILES['nir']
-        extension = myfilenir.name.split('.')[1]
-        photo_path = 'static/img/' 
-        if os.path.exists(photo_path + 'nir.png'):
-            os.remove(photo_path + 'nir.png')
-        elif os.path.exists(photo_path + 'nir.jpg'):
-            os.remove(photo_path + 'nir.jpg')
-        elif os.path.exists(photo_path + 'nir.jpeg'):
-            os.remove(photo_path + 'nir.jpeg')
-        fs = FileSystemStorage()
-        fs.save(photo_path + 'nir.' + extension, myfilenir)
-    algorithm=request.POST['algorithm']
-    '''
-    if algorithm=='vari':
-        dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path)
-    '''  
-    if algorithm=='fndvi':
-        dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,1)
-    else:
-        dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,extension,photo_path,2)
+        if algorithm=='rndvi':       
+            myfilenir = request.FILES['nir']
+            if os.path.exists(photo_path + 'nir.png'):
+                os.remove(photo_path + 'nir.png')
+            elif os.path.exists(photo_path + 'nir.jpg'):
+                os.remove(photo_path + 'nir.jpg')
+            elif os.path.exists(photo_path + 'nir.jpeg'):
+                os.remove(photo_path + 'nir.jpeg')
+            fs1 = FileSystemStorage()
+            fs1.save(photo_path + 'nir.' + extension, myfilenir)
+        if algorithm=='fndvi':
+            dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,0,extension,photo_path,1)
+        else:
+            dense,sparse,barren=calcVegIndex(photo_path+'test.'+extension,photo_path+'nir.'+extension,extension,photo_path,2)
       
-    inputimg='img/test.'+extension
-    outputimg='img/result.'+extension
-    #plotimg='img/plot.png'
-    return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren})
+        inputimg='img/test.'+extension
+        outputimg='img/result.'+extension
+        #plotimg='img/plot.png'
+        return render(request , 'output.html',{'outputimg':outputimg,'inputimg':inputimg,'dense':dense,'sparse':sparse,'barren':barren})
