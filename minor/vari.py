@@ -19,6 +19,11 @@ def calcVegIndex(img,extension,photo_path,num=0):
         except:
             image=mpimg.imread('static/img/test.jpeg')
             extension = 'jpeg'   
+    #normalizedImg = np.zeros((800, 800))
+    #normalizedImg = cv2.normalize(image, normalizedImg, 0, 255, cv2.NORM_MINMAX)  
+    #image = cv2.fastNlMeansDenoisingColored(image, None, 3, 3, 7, 21)
+    #normalizedImg = np.zeros((800, 800))
+    #image = cv2.normalize(image, normalizedImg, 0, 255, cv2.NORM_MINMAX)  
     if num==1:
         NIR = image[:, :, 0].astype('float')
         blue = image[:, :, 2].astype('float')
@@ -29,7 +34,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
         bot=NIR + VIS
         bot[bot==0]=0.0001
         NDVI = (NIR - VIS) / (bot) 
-        cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','yellow','green'])
+        cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','green','yellow'])
         fig, ax = plt.subplots()
         ax.imshow(NDVI,cmap=cmap)
         plt.axis('off') 
@@ -77,7 +82,7 @@ def calcVegIndex(img,extension,photo_path,num=0):
             NIR = image_nir
             red=image[:,:,0].astype('float')
             NDVI=(NIR-red)/(NIR+red)
-            cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','orange','yellow', 'green'])
+            cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','green', 'yellow'])
             fig, ax = plt.subplots()
             ax.imshow(NDVI,cmap=cmap)
             plt.axis('off') 

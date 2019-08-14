@@ -27,7 +27,7 @@ def upload(request):
             os.remove(photo_path+'test.jpeg')
         fs = FileSystemStorage()
         fs.save(photo_path+'test.'+ extension, myfile)
-    if request.method == 'POST' and request.FILES['nir']:
+    elif request.method == 'POST' and request.FILES['nir']:
         myfilenir = request.FILES['nir']
         extension = myfilenir.name.split('.')[1]
         photo_path = 'static/img/' 

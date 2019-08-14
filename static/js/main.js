@@ -22,4 +22,14 @@ function checkForm(){
         sp.innerHTML='!please select any algorithm';
         return flag;
     }
+    if (alg=="fndvi" && nir){
+        sp.style.display='block';
+        sp.innerHTML='!cant select nir for VARI';
+        return flag;
+    }
+    if(alg=="rndvi" && nir==''){
+        sp.style.display='block';
+        sp.innerHTML='!please select nir image for NDVI';
+        return flag;
+    }
 }
