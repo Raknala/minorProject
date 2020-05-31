@@ -36,10 +36,10 @@ def calcVegIndex(img,nir,extension,photo_path,num=0):
         red = (blue + new) ** 2 / bottom
         bot=green + red
         bot[bot==0]=0.0001
-        NDVI = (green - red) / (bot) 
+        VARI = (green - red) / (bot) 
         cmap = matplotlib.colors.LinearSegmentedColormap.from_list("", [ 'red','yellow','green'])
         fig, ax = plt.subplots()
-        ax.imshow(NDVI,cmap=cmap)
+        ax.imshow(VARI,cmap=cmap)
         plt.axis('off') 
         fig.savefig(photo_path+'result.'+extension, bbox_inches='tight')
         plt.clf()
@@ -66,7 +66,7 @@ def calcVegIndex(img,nir,extension,photo_path,num=0):
         dense = 0
         sparse = 0
         barren = 0
-        for list in NDVI:
+        for list in VARI:
             for sublist in list:
                 if (sublist>= 0.6):
                     dense += 1
